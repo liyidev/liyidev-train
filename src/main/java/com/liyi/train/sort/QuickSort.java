@@ -1,7 +1,7 @@
 package com.liyi.train.sort;
 
 /**
- * @description:快速排序
+ * @description:快速排序(不稳定)
  * @author: liyi
  * @create: 2018-10-12 19:50
  */
