@@ -1,9 +1,7 @@
 import com.liyi.train.Father;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * @description:
@@ -16,11 +14,12 @@ public class App {
 //        Children.a();
 //        Children children = new Children();
 //        System.out.println(2 << 1);
-        List<String> strings = Arrays.asList("3", "6", "1", "9");
-        Collections.sort(strings);
-        for (String string : strings) {
-            System.out.println(string);
-        }
+//        List<String> strings = Arrays.asList("3", "6", "1", "9");
+//        Collections.sort(strings);
+//        for (String string : strings) {
+//            System.out.println(string);
+//        }
+        System.out.println(new Random().nextInt(10));
     }
 
     @Test
