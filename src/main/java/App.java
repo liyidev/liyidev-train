@@ -19,6 +19,7 @@ public class App {
 //        for (String string : strings) {
 //            System.out.println(string);
 //        }
+        //test
         System.out.println(new Random().nextInt(10));
     }
 
