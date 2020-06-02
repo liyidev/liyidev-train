@@ -19,7 +19,8 @@ public class App {
 //        for (String string : strings) {
 //            System.out.println(string);
 //        }
-        //test2
+        //test4
+        //test3
         System.out.println(new Random().nextInt(10));
     }
 
