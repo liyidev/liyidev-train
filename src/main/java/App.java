@@ -2,6 +2,7 @@ import com.liyi.train.Father;
 import org.junit.Test;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicStampedReference;
 
 /**
  * @description:
@@ -9,6 +10,8 @@ import java.util.*;
  * @create: 2018-10-10 19:30
  */
 public class App {
+    private static AtomicStampedReference<Integer> money =
+            new AtomicStampedReference<Integer>(19, 0);
     public static void main (String[] args) {
 //        ArrayList list = new ArrayList();
 //        list.add(0);
@@ -26,6 +29,36 @@ public class App {
        // <div id="footer">contact : email.support@github.com</div>
 //        System.out.println(result);
         System.out.println(1^2);
+
+        for (int i = 0; i < 10; i++) {
+            final int stamp = money.getStamp();
+
+            new Thread(new Runnable() {
+                public void run () {
+                    while (true) {
+                        Integer reference = money.getReference();
+                        if (reference < 20) {
+                            if (money.compareAndSet(reference, reference + 20,
+                                    stamp, stamp + 1)) {
+                                System.out.println("余额小于20，充值成功，余额为："
+                                        + money.getReference() +
+                                        "元！" + "stamp: " + stamp);
+                                break;
+
+                            } else {
+                                break;
+                            }
+                        }
+                    }
+                }
+            }, "rechargeThread" + i).start();
+            //test5
+            //test4
+            //test3
+            //testMerge
+            System.out.println(new Random().nextInt(10));
+            //        System.out.println(result);
+        }
     }
 //    public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
 //        ArrayList<Integer> list = new ArrayList<>();
