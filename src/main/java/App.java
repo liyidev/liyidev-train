@@ -24,6 +24,7 @@ public class App {
         //test3
         //testMerge
         System.out.println(new Random().nextInt(10));
+        //        System.out.println(result);
     }
 
     @Test
