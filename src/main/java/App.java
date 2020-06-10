@@ -22,6 +22,7 @@ public class App {
         //test5
         //test4
         //test3
+        //testMerge
         System.out.println(new Random().nextInt(10));
     }
 
