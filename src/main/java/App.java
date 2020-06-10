@@ -2,6 +2,7 @@ import com.liyi.train.Father;
 import org.junit.Test;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicStampedReference;
 
 /**
  * @description:
@@ -9,22 +10,39 @@ import java.util.*;
  * @create: 2018-10-10 19:30
  */
 public class App {
+    private static AtomicStampedReference<Integer> money =
+            new AtomicStampedReference<Integer>(19, 0);
     public static void main (String[] args) {
 
-//        Children.a();
-//        Children children = new Children();
-//        System.out.println(2 << 1);
-//        List<String> strings = Arrays.asList("3", "6", "1", "9");
-//        Collections.sort(strings);
-//        for (String string : strings) {
-//            System.out.println(string);
-//        }
-        //test5
-        //test4
-        //test3
-        //testMerge
-        System.out.println(new Random().nextInt(10));
-        //        System.out.println(result);
+        for (int i = 0; i < 10; i++) {
+            final int stamp = money.getStamp();
+
+            new Thread(new Runnable() {
+                public void run () {
+                    while (true) {
+                        Integer reference = money.getReference();
+                        if (reference < 20) {
+                            if (money.compareAndSet(reference, reference + 20,
+                                    stamp, stamp + 1)) {
+                                System.out.println("余额小于20，充值成功，余额为："
+                                        + money.getReference() +
+                                        "元！" + "stamp: " + stamp);
+                                break;
+
+                            } else {
+                                break;
+                            }
+                        }
+                    }
+                }
+            }, "rechargeThread" + i).start();
+            //test5
+            //test4
+            //test3
+            //testMerge
+            System.out.println(new Random().nextInt(10));
+            //        System.out.println(result);
+        }
     }
 
     @Test
