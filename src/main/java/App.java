@@ -18,24 +18,25 @@ public class App {
             final int stamp = money.getStamp();
 
             new Thread(new Runnable() {
-                public void run () {
-                    while (true) {
-                        Integer reference = money.getReference();
-                        if (reference < 20) {
-                            if (money.compareAndSet(reference, reference + 20,
-                                    stamp, stamp + 1)) {
-                                System.out.println("余额小于20，充值成功，余额为："
-                                        + money.getReference() +
-                                        "元！" + "stamp: " + stamp);
-                                break;
-
+                public void run() {
+                    for (int i = 0; i < 10; i++) {
+                        while (true) {
+                            Integer m = money.getReference();
+                            int timeStamp = money.getStamp();
+                            if (m > 10) {
+                                System.out.println("大于10元，可以进行消费！");
+                                if (money.compareAndSet(m, m - 10,
+                                        timeStamp, timeStamp + 1)) {
+                                    System.out.println("消费成功，余额为：" + money.getReference()  + "stamp: " + timeStamp);
+                                    break;
+                                }
                             } else {
                                 break;
                             }
                         }
                     }
                 }
-            }, "rechargeThread" + i).start();
+            }, "userConsumeThread").start();
             //test5
             //test4
             //test3
