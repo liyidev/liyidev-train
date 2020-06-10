@@ -10,21 +10,35 @@ import java.util.*;
  */
 public class App {
     public static void main (String[] args) {
-
-//        Children.a();
-//        Children children = new Children();
-//        System.out.println(2 << 1);
-//        List<String> strings = Arrays.asList("3", "6", "1", "9");
-//        Collections.sort(strings);
-//        for (String string : strings) {
-//            System.out.println(string);
+//        ArrayList list = new ArrayList();
+//        list.add(0);
+//        list.add(1);
+//        list.add(2);
+//        list.add(3);
+//        list.add(4);
+//
+//        int s = list.size();
+//        ArrayList result = new ArrayList(s);
+//        for (int i = 0; i < s; i++) {
+//            result.set(i, list.get(s-1-i));
 //        }
-        //test5
-        //test4
-        //test3
-        //testMerge
         System.out.println(new Random().nextInt(10));
+       // <div id="footer">contact : email.support@github.com</div>
+//        System.out.println(result);
+        System.out.println(1^2);
     }
+//    public ArrayList<Integer> printListFromTailToHead(ListNode listNode) {
+//        ArrayList<Integer> list = new ArrayList<>();
+//        while (listNode != null) {
+//            list.add(listNode.val);
+//        }
+//        int s = list.size();
+//        ArrayList<Integer> result = new ArrayList<Integer>(s);
+//        for (int i = 0; i < s; i++) {
+//            result.set(i, list.get(s-1-i));
+//        }
+//        return result;
+//    }
 
     @Test
     public void contact () {
